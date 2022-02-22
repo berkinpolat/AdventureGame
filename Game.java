@@ -8,7 +8,7 @@ public class Game {
 
         Zombie zombie = new Zombie();
         System.out.println(zombie.getHealth());
-        System.out.println("test");
+        System.out.println("tes");
 
     }
 
