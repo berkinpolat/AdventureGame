@@ -49,6 +49,10 @@ public class Player {
         System.out.println(this.inventory.getArmor().toString());
     }
 
+    public void incrementHealth() {
+        this.health++;
+    }
+
     public Inventory getInventory() {
         return inventory;
     }
