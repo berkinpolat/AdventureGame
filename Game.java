@@ -12,15 +12,16 @@ public class Game {
         initArmors();
         initWeapons();
         player = new Player();
-        //player.showStats();
+        player.showStats();
         //System.out.println("---------------");
-        player.setHealth(player.getHealth());
-        //player.showStats();
+        //player.setHealth(player.getHealth()-10);
         //System.out.println("---------------");
-        //SafeHouse safeHouse = new SafeHouse();
-        //safeHouse.onLocation();
+        SafeHouse safeHouse = new SafeHouse();
         Toolstore toolstore = new Toolstore();
+        player.getInventory().setBalance(1000);
         toolstore.onLocation();
+        safeHouse.onLocation();
+        player.showStats();
 
     }
 
@@ -55,7 +56,7 @@ public class Game {
                 Choice:""");
         Scanner sc = new Scanner(System.in);
         String choice = sc.nextLine();
-        if (choice.equals("Y") || choice.equals("y")) System.exit(12);
+        if (choice.equalsIgnoreCase("Y")) System.exit(12);
     }
 
     public static void main(String[] args) {
