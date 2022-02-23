@@ -5,15 +5,6 @@ public class Toolstore extends NormalLoc{
     public void menu(){
         Scanner sc = new Scanner(System.in);
         String choice;
-        //weaponlist
-            //show balance
-            //show weapons
-            //close list
-        //armorlist
-            //show balance
-            //show armors
-            //close list
-        //close menu
         System.out.println("\nYour balance: " + Game.player.getInventory().getBalance() + "G");
         while (true){
             System.out.print("""
@@ -72,16 +63,16 @@ public class Toolstore extends NormalLoc{
         while (true){
             System.out.println("\nYour balance: " + Game.player.getInventory().getBalance() + "G");
             System.out.println("Current armor: " + Game.player.getInventory().getArmor().getName());
-            System.out.print("""
-                    
-                    ID  Name    Defense   Cost
-                    1   Light   1         15G
-                    2   Middle  3         25G
-                    3   Heavy   5         40G
-                    
-                    0 - Return to menu
-                    
-                    Choice:""");
+            System.out.println("\nID\tName\tDefense\tCost");
+            for (int i = 1; i < Game.armorList.size(); i++){
+                System.out.println(Game.armorList.get(i).getId() + "\t"
+                + Game.armorList.get(i).getName() + "\t"
+                + Game.armorList.get(i).getBlock() + "\t\t"
+                + Game.armorList.get(i).getCost());
+            }
+            System.out.print("\n0 - Return to menu\n\nChoice: ");
+
+
             choice = sc.nextInt();
             if (!((choice>=0) && (choice<=3))){
                 System.out.println("Invalid command, try again.");
@@ -92,10 +83,22 @@ public class Toolstore extends NormalLoc{
     }
 
     public void selectArmor(Armor armor){
-        if (buy(armor.getCost())){
+        Scanner sc = new Scanner(System.in);
+        if (Game.player.getInventory().getArmor().getId() == armor.getId()){
+            System.out.println("Buu sahipsin buna almak istediğine emin misin?");
+            String cevap = sc.nextLine();
+            if (cevap.equalsIgnoreCase("yes") && buy(armor.getCost())){
+                Game.player.getInventory().setArmor(armor);
+                System.out.println("Purchased: " + armor.getName() + " Armor.");
+            }
+
+
+        }
+        else if (buy(armor.getCost())){
             Game.player.getInventory().setArmor(armor);
             System.out.println("Purchased: " + armor.getName() + " Armor.");
         }
+
     }
 
     public boolean buy(int cost){
@@ -111,13 +114,11 @@ public class Toolstore extends NormalLoc{
 
     @Override
     public String onLocation() {
-        //menu
         System.out.println("""
                 =========
                 TOOL SHOP
                 =========""");
         menu();
-        //return to map
         return "M";
     }
 }
