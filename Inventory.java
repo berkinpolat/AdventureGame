@@ -11,8 +11,8 @@ public class Inventory {
         this.food = false;
         this.water = false;
         this.balance = money;
-        this.weapon = new Weapon(0, "None", 0, 0);
-        this.armor = new Armor(0, "None", 0, 0);
+        this.weapon = Game.weaponList.get(0);
+        this.armor = Game.armorList.get(0);
     }
 
     public boolean hasWater() {
