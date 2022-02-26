@@ -3,4 +3,5 @@ public class Cave extends BattleLoc{
     public String onLocation() {
         return null;
     }
+
 }
