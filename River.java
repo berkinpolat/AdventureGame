@@ -3,4 +3,5 @@ public class River extends BattleLoc {
     public String onLocation() {
         return null;
     }
+
 }

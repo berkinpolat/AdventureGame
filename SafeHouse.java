@@ -55,6 +55,7 @@ public class SafeHouse extends NormalLoc{
 
         String choice;
         while (true) {
+            Game.player.showStats();
             System.out.print("""
                     
                     Pick a choice from below:
