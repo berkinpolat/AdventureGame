@@ -31,16 +31,15 @@ public class Toolstore extends NormalLoc{
         while (true){
             System.out.println("\nYour balance: " + Game.player.getInventory().getBalance() + "G");
             System.out.println("Current weapon: " + Game.player.getInventory().getWeapon().getName());
-            System.out.print("""
-                    
-                    ID  Name    Damage   Cost
-                    1   Pistol  2        25G
-                    2   Sword   3        35G
-                    3   Rifle   7        45G
-                    
-                    0 - Return to menu
-                    
-                    Choice:""");
+            System.out.println("\nID\tName\tDamage\tCost");
+            for (int i = 1; i < Game.weaponList.size(); i++){
+                System.out.println(Game.weaponList.get(i).getId() + "\t"
+                        + Game.weaponList.get(i).getName() + "\t"
+                        + Game.weaponList.get(i).getDamage() + "\t\t"
+                        + Game.weaponList.get(i).getCost());
+            }
+            System.out.print("\n0 - Return to menu\n\nChoice: ");
+
             choice = sc.nextInt();
             if (!((choice>=0) && (choice<=3))){
                 System.out.println("Invalid command, try again.");
@@ -73,7 +72,6 @@ public class Toolstore extends NormalLoc{
             }
             System.out.print("\n0 - Return to menu\n\nChoice: ");
 
-
             choice = sc.nextInt();
             if (!((choice>=0) && (choice<=3))){
                 System.out.println("Invalid command, try again.");
@@ -93,7 +91,6 @@ public class Toolstore extends NormalLoc{
                 System.out.println("Purchased: " + armor.getName() + " Armor.");
             }
 
-
         }
         else if (buy(armor.getCost())){
             Game.player.getInventory().setArmor(armor);
@@ -110,8 +107,6 @@ public class Toolstore extends NormalLoc{
         System.out.println("Not enough gold.");
         return false;
     }
-
-
 
     @Override
     public String onLocation() {
