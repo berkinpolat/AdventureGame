@@ -83,9 +83,8 @@ public class Cave extends BattleLoc{
                 Game.player.getInventory().setFirewood(true);
             }
 
-            System.out.println("Returning to map.");
-
         }
+        System.out.println("Returning to map.");
         return "M";
     }
 

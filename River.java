@@ -83,9 +83,8 @@ public class River extends BattleLoc {
                 Game.player.getInventory().setWater(true);
             }
 
-            System.out.println("Returning to map.");
-
         }
+        System.out.println("Returning to map.");
         return "M";
     }
 
