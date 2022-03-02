@@ -1,4 +1,4 @@
-# Adventure
+# AdventureGame
 
 ## Explanation
 **A basic text-based adventure game implemented with Object Oriented Programming on Java.**
