@@ -55,12 +55,6 @@ public class Character {
 
     @Override
     public String toString() {
-        return "Character{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", damage=" + damage +
-                ", health=" + health +
-                ", balance=" + balance +
-                '}';
+        return "\nCharacter: " + this.getName();
     }
 }

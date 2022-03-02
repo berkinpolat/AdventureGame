@@ -45,11 +45,8 @@ public class Armor {
 
     @Override
     public String toString() {
-        return "Armor{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", block=" + block +
-                ", cost=" + cost +
-                '}';
+        return "\nArmor"
+                + "\nName: " + this.getName()
+                + "\nDefense: " + this.getBlock();
     }
 }

@@ -45,11 +45,8 @@ public class Weapon {
 
     @Override
     public String toString() {
-        return "Weapon{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", damage=" + damage +
-                ", cost=" + cost +
-                '}';
+        return "\nWeapon"
+                + "\nName: " + this.getName()
+                + "\nDamage: " + this.getDamage();
     }
 }

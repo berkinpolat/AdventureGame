@@ -65,11 +65,9 @@ public class Inventory {
 
     @Override
     public String toString() {
-        return "Inventory{" +
-                "water=" + water +
-                ", food=" + food +
-                ", firewood=" + firewood +
-                ", balance=" + balance +
-                '}';
+        return "\nInventory"
+                + "\nFood: " + this.hasFood()
+                + "\nFirewood: " + this.hasFirewood()
+                + "\nWater: " + this.hasWater();
     }
 }
