@@ -50,7 +50,9 @@ public class Toolstore extends NormalLoc{
     }
 
     public void selectWeapon(Weapon weapon){
-        if (buy(weapon.getCost())){
+        if (Game.player.getInventory().getArmor().getId() == weapon.getId())
+            System.out.println("You already own this item.");
+        else if (buy(weapon.getCost())){
             Game.player.getInventory().setWeapon(weapon);
             Game.player.setDamage(Game.player.getDamage() + Game.player.getInventory().getWeapon().getDamage());
             System.out.println("Purchased: " + weapon.getName() + " Armor.");
@@ -82,16 +84,8 @@ public class Toolstore extends NormalLoc{
     }
 
     public void selectArmor(Armor armor){
-        Scanner sc = new Scanner(System.in);
-        if (Game.player.getInventory().getArmor().getId() == armor.getId()){
-            System.out.println("Buu sahipsin buna almak istediğine emin misin?");
-            String cevap = sc.nextLine();
-            if (cevap.equalsIgnoreCase("yes") && buy(armor.getCost())){
-                Game.player.getInventory().setArmor(armor);
-                System.out.println("Purchased: " + armor.getName() + " Armor.");
-            }
-
-        }
+        if (Game.player.getInventory().getArmor().getId() == armor.getId())
+            System.out.println("You already own this item.");
         else if (buy(armor.getCost())){
             Game.player.getInventory().setArmor(armor);
             System.out.println("Purchased: " + armor.getName() + " Armor.");
