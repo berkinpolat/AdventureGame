@@ -17,6 +17,12 @@ public class River extends BattleLoc {
         }
     }
 
+    public void monsterStatement(){
+        if (bearList.size() == 1) System.out.println("There is a Bear waiting for you.");
+        else if (bearList.size() > 1) System.out.println("There are " + bearList.size()
+                + " Bears waiting for you.");
+    }
+
     @Override
     public String onLocation() {
 
@@ -33,9 +39,7 @@ public class River extends BattleLoc {
                 =====\n""");
 
         if (bearList.size() == 0) genMonster();
-        else if (bearList.size() == 1) System.out.println("There is a Bear waiting for you.");
-        else if (bearList.size() > 1) System.out.println("There are " + bearList.size()
-                + " Bears waiting for you.");
+        monsterStatement();
 
 
         String choice;
@@ -60,9 +64,7 @@ public class River extends BattleLoc {
                 bearList.remove(bearList.get(i));
 
                 if (bearList.size() > 0){
-                    if (bearList.size() == 1) System.out.println("There is a Bear waiting for you.");
-                    else if (bearList.size() > 1) System.out.println("There are " + bearList.size()
-                            + " Bears waiting for you.");
+                    monsterStatement();
 
                     while (true){
                         Scanner sc = new Scanner(System.in);
