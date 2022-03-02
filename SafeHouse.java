@@ -8,7 +8,7 @@ public class SafeHouse extends NormalLoc{
                 SAFEHOUSE
                 =========""");
         Scanner sc = new Scanner(System.in);
-        // check game won
+
         if (Game.player.getInventory().hasFirewood() &&
                 Game.player.getInventory().hasFood() &&
                 Game.player.getInventory().hasWater()) {
@@ -33,7 +33,6 @@ public class SafeHouse extends NormalLoc{
 
         }
 
-        // else full health
         while (Game.player.getHealth() < Game.player.getCharacter().getHealth()) {
             System.out.println("Recovering... Health: " + Game.player.getHealth() + "/" +
                                                     Game.player.getCharacter().getHealth());
