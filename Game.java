@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Game {
     public static Player player;
@@ -16,12 +17,17 @@ public class Game {
         //System.out.println("---------------");
         //player.setHealth(player.getHealth()-10);
         //System.out.println("---------------");
+
         SafeHouse safeHouse = new SafeHouse();
-        Toolstore toolstore = new Toolstore();
+        /*Toolstore toolstore = new Toolstore();
         player.getInventory().setBalance(1000);
         toolstore.onLocation();
-        safeHouse.onLocation();
+        */
+
+        Forest forest = new Forest();
+        forest.onLocation();
         player.showStats();
+        safeHouse.onLocation();
 
     }
 
@@ -47,16 +53,30 @@ public class Game {
         armorList.add(heavy);
     }
 
+    public static void suspense(int i){
+        try {
+            TimeUnit.SECONDS.sleep(i);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void quit() {
-        System.out.print("""
-                
-                Are you sure?
-                Y - Yes, quit game.
-                N - No, go back to game.
-                Choice:""");
         Scanner sc = new Scanner(System.in);
-        String choice = sc.nextLine();
-        if (choice.equalsIgnoreCase("Y")) System.exit(12);
+        String choice;
+        while (true){
+            System.out.print("""
+                    
+                    Are you sure?
+                    Y - Yes, quit game.
+                    N - No, go back to game.
+                    Choice:""");
+            choice = sc.nextLine();
+            if (!(choice.equalsIgnoreCase("Y") || choice.equalsIgnoreCase("N")))
+                System.out.println("Invalid command, try again.");
+            else break;
+        }
+            if (choice.equalsIgnoreCase("Y")) System.exit(12);
     }
 
     public static void main(String[] args) {

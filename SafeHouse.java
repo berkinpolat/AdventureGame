@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class SafeHouse extends NormalLoc{
     @Override
@@ -39,11 +38,7 @@ public class SafeHouse extends NormalLoc{
             System.out.println("Recovering... Health: " + Game.player.getHealth() + "/" +
                                                     Game.player.getCharacter().getHealth());
             Game.player.incrementHealth();
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            Game.suspense(1);
             if (Game.player.getHealth() > Game.player.getCharacter().getHealth())
                 Game.player.setHealth(Game.player.getCharacter().getHealth());
             if (Game.player.getHealth() == Game.player.getCharacter().getHealth())
