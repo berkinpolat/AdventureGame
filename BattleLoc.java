@@ -35,7 +35,7 @@ public abstract class BattleLoc extends Location{
         while (playerHP > 0 && monsterHP > 0) {
             monsterHP -= playerAD;
             if (monsterHP < 0) monsterHP = 0;
-            System.out.println("You attacked.\n"+monster.getName()+" HP: " + monsterHP);
+            System.out.println("\nYou attacked.\n"+monster.getName()+" HP: " + monsterHP);
             if (monsterHP == 0) break;
             playerHP -= monsterAD;
             System.out.println(monster.getName() + " attacked you.\nYour HP: " + playerHP);
@@ -53,7 +53,7 @@ public abstract class BattleLoc extends Location{
             //remove from list
 
         if (monsterHP == 0) {
-            System.out.print("You slayed a " + monster.getName() + "\nYou obtained ");
+            /*System.out.print("You slayed a " + monster.getName() + "\nYou obtained ");
             if (monster instanceof Vampire){
                 Game.player.getInventory().setFirewood(true);
                 System.out.println(" firewood.");
@@ -65,9 +65,9 @@ public abstract class BattleLoc extends Location{
             else if (monster instanceof Bear){
                 Game.player.getInventory().setWater(true);
                 System.out.println(" water.");
-            }
+            }*/
             Game.player.getInventory().setBalance(Game.player.getInventory().getBalance() + monster.getLoot());
-            System.out.println("You gained " + monster.getLoot() + "G by slaying " + monster.getName());
+            System.out.println("You gained " + monster.getLoot() + "G by slaying " + monster.getName() + "\n");
             monsterList.remove(monster);
             Game.player.setHealth(playerHP);
         }
