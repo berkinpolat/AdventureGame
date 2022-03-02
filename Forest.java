@@ -17,6 +17,12 @@ public class Forest extends BattleLoc{
         }
     }
 
+    public void monsterStatement(){
+        if (vampireList.size() == 1) System.out.println("There is a Vampire waiting for you.");
+        else if (vampireList.size() > 1) System.out.println("There are " + vampireList.size()
+                + " Vampires waiting for you.");
+    }
+
     @Override
     public String onLocation() {
 
@@ -33,9 +39,7 @@ public class Forest extends BattleLoc{
                 ======\n""");
 
         if (vampireList.size() == 0) genMonster();
-        else if (vampireList.size() == 1) System.out.println("There is a Vampire waiting for you.");
-        else if (vampireList.size() > 1) System.out.println("There are " + vampireList.size()
-                + " Vampires waiting for you.");
+        monsterStatement();
 
 
         String choice;
@@ -60,9 +64,7 @@ public class Forest extends BattleLoc{
                 vampireList.remove(vampireList.get(i));
 
                 if (vampireList.size() > 0){
-                    if (vampireList.size() == 1) System.out.println("There is a Vampire waiting for you.");
-                    else if (vampireList.size() > 1) System.out.println("There are " + vampireList.size()
-                            + " Vampires waiting for you.");
+                    monsterStatement();
 
                     while (true){
                         Scanner sc = new Scanner(System.in);

@@ -17,26 +17,22 @@ public class Cave extends BattleLoc{
         }
     }
 
+    public void monsterStatement(){
+        if (zombieList.size() == 1) System.out.println("There is a Zombie waiting for you.");
+        else if (zombieList.size() > 1) System.out.println("There are " + zombieList.size()
+                + " Zombies waiting for you.");
+    }
+
     @Override
     public String onLocation() {
-
-        System.out.println("////////////TEST////////////\n");
-        for (Zombie zombie : zombieList) {
-            System.out.println(zombie);
-        }
-        System.out.println("\n");
-
 
         System.out.println("""
                 ====
                 CAVE
                 ====\n""");
 
-        if (zombieList.size() == 0) genMonster();
-        else if (zombieList.size() == 1) System.out.println("There is a Zombie waiting for you.");
-        else if (zombieList.size() > 1) System.out.println("There are " + zombieList.size()
-                + " Zombies waiting for you.");
-
+        if (zombieList.isEmpty()) genMonster();
+        monsterStatement();
 
         String choice;
         while (true){
@@ -60,9 +56,7 @@ public class Cave extends BattleLoc{
                 zombieList.remove(zombieList.get(i));
 
                 if (zombieList.size() > 0){
-                    if (zombieList.size() == 1) System.out.println("There is a Zombie waiting for you.");
-                    else if (zombieList.size() > 1) System.out.println("There are " + zombieList.size()
-                            + " Zombies waiting for you.");
+                    monsterStatement();
 
                     while (true){
                         Scanner sc = new Scanner(System.in);

@@ -4,31 +4,74 @@ import java.util.concurrent.TimeUnit;
 
 public class Game {
     public static Player player;
-    private static Location location;
-    public static boolean hasWon = false;
     public static ArrayList<Weapon> weaponList = new ArrayList<>();
     public static ArrayList<Armor> armorList = new ArrayList<>();
+    private static final SafeHouse safeHouse = new SafeHouse();
+    private static final Toolstore toolstore = new Toolstore();
+    private static final Forest forest = new Forest();
+    private static final Cave cave = new Cave();
+    private static final River river = new River();
 
     public static void start(){
         initArmors();
         initWeapons();
         player = new Player();
-        player.showStats();
-        //System.out.println("---------------");
-        //player.setHealth(player.getHealth()-10);
-        //System.out.println("---------------");
-
-        SafeHouse safeHouse = new SafeHouse();
-        /*Toolstore toolstore = new Toolstore();
-        player.getInventory().setBalance(1000);
-        toolstore.onLocation();
-        */
-
-        Forest forest = new Forest();
-        forest.onLocation();
-        player.showStats();
         safeHouse.onLocation();
+        int location = map();
 
+        while (true) {
+            switch (location){
+                case 0:
+                    location = map();
+                    break;
+                case 1:
+                    safeHouse.onLocation();
+                    location = 0;
+                    break;
+                case 2:
+                    cave.onLocation();
+                    location = 0;
+                    break;
+                case 3:
+                    forest.onLocation();
+                    location = 0;
+                    break;
+                case 4:
+                    river.onLocation();
+                    location = 0;
+                    break;
+                case 5:
+                    toolstore.onLocation();
+                    location = 0;
+                    break;
+            }
+        }
+
+    }
+
+    public static int map(){
+        Scanner sc = new Scanner(System.in);
+        int choice;
+        while (true) {
+            System.out.print("""
+                    ===
+                    MAP
+                    ===
+                    
+                    1 - Safe House
+                    2 - Cave
+                    3 - Forest
+                    4 - River
+                    5 - ToolStore
+                    0 - Quit Game
+                    
+                    Choice: """);
+            choice = sc.nextInt();
+            if (choice >= 0 && choice <= 5) break;
+            else System.out.println("Invalid command, try again.");
+        }
+        if (choice == 0) quit();
+        return choice;
     }
 
     private static void initWeapons(){
