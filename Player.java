@@ -42,8 +42,8 @@ public class Player {
     }
 
     public void showStats() {
-        System.out.println(this.toString());
         System.out.println(this.character.toString());
+        System.out.println(this.toString());
         System.out.println(this.inventory.toString());
         System.out.println(this.inventory.getWeapon().toString());
         System.out.println(this.inventory.getArmor().toString());
@@ -83,9 +83,7 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "damage=" + damage +
-                ", health=" + health +
-                '}';
+        return "Total Damage: " + this.getDamage()
+                + "\nHealth: " + this.getHealth();
     }
 }

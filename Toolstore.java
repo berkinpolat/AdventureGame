@@ -53,6 +53,7 @@ public class Toolstore extends NormalLoc{
     public void selectWeapon(Weapon weapon){
         if (buy(weapon.getCost())){
             Game.player.getInventory().setWeapon(weapon);
+            Game.player.setDamage(Game.player.getDamage() + Game.player.getInventory().getWeapon().getDamage());
             System.out.println("Purchased: " + weapon.getName() + " Armor.");
         }
     }
